@@ -1,0 +1,70 @@
+/* Top Navbar */
+
+.top-navbar-signed {
+  .dropdown-menu {
+    width: 300px;
+    &.bill {
+      width: auto !important;
+    }
+    .dropdown-item {
+      &:hover {
+        background-color: transparent;
+      }
+      color: #fff;
+    }
+  }
+  .custom-dropdown {
+    background-color: $background;
+    border: $background;
+    &:focus {
+      background: $background;
+    }
+    &.dropdown-toggle::after {
+      margin-right: 190px;
+    }
+  }
+  .custom-icon {
+    right: 10px;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .icon-positioned {
+    left: 8px;
+    width: 25px;
+    height: 25px;
+    top: 5px;
+    display: block;
+  }
+  .link {
+    color: #fff;
+    text-decoration: none;
+  }
+  input.search,
+  button.search {
+    display: block;
+    background: $background url('../../assets/ICONs/loupe.png') no-repeat 13px
+      center;
+    background-size: 20px 20px;
+  }
+}
+/* Top Navbar */
+
+/* Navbar */
+.slick-prev,
+.slick-next {
+  &::before {
+    color: $primary !important;
+  }
+}
+/* Navbar */
+
+/* Footer */
+.footer {
+  .icon {
+    width: 80px;
+    height: 50px;
+  }
+}
+/* Footer */

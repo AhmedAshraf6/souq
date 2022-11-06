@@ -1,0 +1,68 @@
+$primary: #163a5f;
+$secondary: #45eba5;
+$background: #e3f6f5;
+body {
+  direction: rtl;
+  overflow-x: hidden;
+  background-color: $background !important;
+}
+
+// All Style Files
+@import '~bootstrap/scss/bootstrap.scss';
+@import './components/shared-components/Shared.scss';
+@import './components/home/Home.scss';
+@import './components/profile/ProfileCom.scss';
+@import './components/wallet/Wallet.scss';
+@import './components/edit-profile/EditProfile.scss';
+@import './components/profile/ProfileCom.scss';
+@import './components/puplish-product/PuplishProduct.scss';
+@import './components/sell/SelectProduct.scss';
+@import './components/seller/Seller.scss';
+
+/* My own Custom Css*/
+.color-in-background {
+  background: $background;
+}
+.pointer {
+  cursor: pointer;
+}
+.navbar-icon,
+.heart {
+  width: 25px;
+  height: 25px;
+}
+Link {
+  text-decoration: none;
+}
+
+.padding-0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.icon-box {
+  .egypt-icon {
+    top: 5px;
+    left: 80px;
+    padding-left: 3px;
+    padding-right: 10px;
+    width: 39px;
+    height: 39px;
+  }
+}
+.icon {
+  width: 35px;
+  height: 35px;
+}
+.dropdown-toggle.removearrow {
+  & {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+.very-small-icon {
+  width: 15px;
+  height: 15px;
+}
+/* My own Custom Css*/

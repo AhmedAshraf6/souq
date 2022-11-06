@@ -1,0 +1,22 @@
+/* Edit Profile Com */
+.edit-profile-com {
+  .lamb-box {
+    top: -24px;
+    right: 70px;
+  }
+  .basic {
+    .gug-icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .form,
+  .birth {
+    & {
+      @media (max-width: 992px) {
+        width: 100% !important;
+      }
+    }
+  }
+}
+/* Edit Profile Com */
