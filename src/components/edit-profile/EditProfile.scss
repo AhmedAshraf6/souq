@@ -1,0 +1,109 @@
+/* Edit Profile Com */
+.edit-profile {
+  .lamb-box {
+    top: -24px;
+    right: 70px;
+  }
+  .basic {
+    .gug-icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .form,
+  .birth,
+  .make-100 {
+    & {
+      @media (max-width: 992px) {
+        width: 100% !important;
+      }
+    }
+  }
+  input.form-control-lg {
+    @media (max-width: 576px) {
+      & {
+        padding: 0.25rem 0.5rem !important;
+        font-size: 10px !important;
+      }
+    }
+  }
+  // handle image
+  input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .picture-upload {
+    height: 90px;
+    position: relative;
+    overflow: hidden;
+    .custom-picture-upload {
+      position: absolute;
+      outline: none;
+      color: transparent;
+      &::after {
+        content: '';
+        background-image: url(../../assets/ICONs/photocamera.png);
+        background-size: 100% 100%;
+        width: 30px;
+        height: 30px;
+        display: block;
+        position: relative;
+        right: 40%;
+        & {
+          @media (max-width: 576px) {
+            right: 45%;
+          }
+        }
+      }
+    }
+    .img-cover {
+      object-fit: cover;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center center;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .btn-close {
+      z-index: 3;
+    }
+  }
+}
+/* Edit Profile Com */
+
+/* Identity Documented */
+.identity-documented {
+  input {
+    display: none;
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+  .upload-document {
+    .custom-upload {
+      .first-circle {
+        padding: 92px;
+      }
+      .second-circle {
+        left: 124px;
+        top: 59px;
+        padding: 66px;
+      }
+      .custom-image {
+        width: 300px;
+        height: 200px;
+        top: 0;
+        left: -28px;
+        z-index: 3;
+      }
+    }
+    .edit-image {
+      width: 250px;
+      height: 250px;
+    }
+  }
+}
+/* Identity Documented */

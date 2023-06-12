@@ -1,0 +1,34 @@
+/* Select Product */
+.select-product {
+  .dropstart,
+  .dropdown {
+    .dropdown-toggle {
+      &::before,
+      &::after {
+        display: none;
+      }
+      .btn {
+        &:hover,
+        &:focus {
+          background: #fff;
+          border: transparent;
+        }
+      }
+    }
+  }
+  .dropdown-menu {
+    &.third-dropdown {
+      margin-right: 20px !important;
+      margin-top: -9px !important;
+    }
+  }
+  .reponsive-dropdown {
+    .dropdown-menu {
+      &.third-dropdown {
+        margin-left: 0 !important;
+        margin-top: 11px !important;
+      }
+    }
+  }
+}
+/* Select Product */

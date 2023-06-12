@@ -1,0 +1,196 @@
+{
+  /* cities */
+}
+<div className='my-3 w-25 citites'>
+  <h6>اختر المدينة</h6>
+  <select
+    className='form-select text-primary border-0 box'
+    name='city_id'
+    onChange={handleChange}
+  >
+    {cities &&
+      cities.length > 0 &&
+      cities.map((city, index) => {
+        return (
+          <option
+            value={city.id}
+            className='me-3 text-primary'
+            // selected={l.label == subcat}
+            key={index}
+          >
+            {city.name}
+          </option>
+        );
+      })}
+  </select>
+</div>;
+{
+  /* نوع الاعلان */
+}
+<div className='my-3'>
+  <h6 ref={adTypeRef}>نوع اعلانك</h6>
+  <div className='d-flex justify-content-start my-1 '>
+    {/* Checkbox */}
+    <div className='radio-group'>
+      {adsType &&
+        adsType.length > 0 &&
+        adsType.map((ad) => {
+          return (
+            <label className='radio ms-5 my-1' key={ad.id}>
+              <input
+                type='radio'
+                name='adType'
+                value={ad.id}
+                onChange={handleChange}
+              />
+              {ad.name_ar}
+              <span></span>
+            </label>
+          );
+        })}
+    </div>
+  </div>
+  {formErrors.adTypeError && (
+    <p className='text-danger'>{formErrors.adTypeError}</p>
+  )}
+</div>;
+{
+  /* طريقة الدفع */
+}
+<div className='my-3'>
+  <h6 ref={PaymentRef}>طريقة الدفع</h6>
+  <div className='d-flex justify-content-start my-1'>
+    {/* Checkbox */}
+    <div className='radio-group'>
+      <label className='radio ms-5 my-1'>
+        <input
+          type='radio'
+          name='payment_option'
+          value='cash'
+          onChange={handleChange}
+        />
+        كاش
+        <span></span>
+      </label>
+      <label className='radio ms-5 my-1'>
+        <input
+          type='radio'
+          name='payment_option'
+          value='exchange'
+          onChange={handleChange}
+        />
+        تبادل
+        <span></span>
+      </label>
+      <label className='radio ms-5 my-1'>
+        <input
+          type='radio'
+          name='payment_option'
+          value='installments'
+          onChange={handleChange}
+        />
+        أقساط
+        <span></span>
+      </label>
+    </div>
+  </div>
+  {formErrors.paymentOptionError && (
+    <p className='text-danger'>{formErrors.paymentOptionError}</p>
+  )}
+</div>;
+{
+  namecat == 'سيارات' && (
+    <>
+      {/* حالة السيارة*/}
+      <div className='my-3'>
+        <h6 ref={carStatusRef}>حالة السيارة</h6>
+        <div className='d-flex justify-content-start my-4'>
+          {/* Checkbox */}
+          <div className='radio-group'>
+            <label className='radio ms-5 my-1'>
+              <input
+                type='radio'
+                name='carStatus'
+                value='1'
+                onChange={handleChange}
+              />
+              جديد
+              <span></span>
+            </label>
+            <label className='radio ms-5 my-1'>
+              <input
+                type='radio'
+                name='carStatus'
+                value='0'
+                onChange={handleChange}
+              />
+              مستعمل
+              <span></span>
+            </label>
+          </div>
+        </div>
+        {formErrors.carStatusError && (
+          <p className='text-danger'>{formErrors.carStatusError}</p>
+        )}
+      </div>
+      {/* حالة المحرك*/}
+      <div className='my-3'>
+        <h6 ref={engineStatusRef}>ناقل المحرك</h6>
+        <div className='d-flex justify-content-start my-4'>
+          {/* Checkbox */}
+          <div className='radio-group'>
+            <label className='radio ms-5 my-1'>
+              <input
+                type='radio'
+                name='engineStatus'
+                value='1'
+                onChange={handleChange}
+              />
+              مانيوال
+              <span></span>
+            </label>
+            <label className='radio ms-5 my-1'>
+              <input
+                type='radio'
+                name='engineStatus'
+                value='0'
+                onChange={handleChange}
+              />
+              أوتوماتيك
+              <span></span>
+            </label>
+          </div>
+        </div>
+        {formErrors.engineStatusError && (
+          <p className='text-danger'>{formErrors.engineStatusError}</p>
+        )}
+      </div>
+    </>
+  );
+}
+<div className='explain mt-2'>
+  <div className='form-floating custom-textarea'>
+    <textarea
+      className='form-control h-100'
+      placeholder='اشرح حالة المنتج ، ومميزاته وسبب البيع'
+      id='floatingTextarea2'
+      value={formValues.explainAds}
+      name='explainAds'
+      onChange={handleChange}
+      ref={explainAdRef}
+    ></textarea>
+    <label
+      htmlFor='floatingTextarea2'
+      className='label-textarea text-primary fs-6 fw-bold text-wrap'
+    >
+      اشرح حالة المنتج ، ومميزاته وسبب البيع
+    </label>
+  </div>
+  <span className='d-flex justify-content-end'>0/4067</span>
+  {formErrors.explainAdsError && (
+    <p className='text-danger'>{formErrors.explainAdsError}</p>
+  )}
+  {formErrors.explainAdsLenghtError && (
+    <p className='text-danger'>{formErrors.explainAdsLenghtError}</p>
+  )}
+</div>;

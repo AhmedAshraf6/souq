@@ -1,0 +1,21 @@
+.filter-ads {
+  .filter-body {
+    .heart {
+      top: 6px;
+      left: 10px;
+    }
+    .info {
+      font-size: 13px;
+    }
+  }
+}
+.responsive-filter {
+  background: $primary;
+  overflow-y: scroll;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+}

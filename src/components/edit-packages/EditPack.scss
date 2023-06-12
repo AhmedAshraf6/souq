@@ -1,0 +1,21 @@
+.edit-packages {
+  .ads {
+    .box {
+      min-height: 180px;
+    }
+    h4 {
+      @media (max-width: 576px) {
+        & {
+          font-size: 13px !important;
+        }
+      }
+    }
+    h6 {
+      @media (max-width: 576px) {
+        & {
+          font-size: 11px !important;
+        }
+      }
+    }
+  }
+}

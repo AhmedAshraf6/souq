@@ -1,0 +1,23 @@
+.common-questions {
+  min-height: calc(100vh - 152px);
+  .accordion-button:last-child:hover {
+    color: $primary;
+  }
+  .accordion-button:not(.collapsed) {
+    color: $dark !important;
+    background-color: $light !important;
+  }
+  .number {
+    background-color: #f2f2f2;
+    font-family: 'Manrope', sans-serif !important;
+  }
+  .custom-icon {
+    &::after {
+      margin-left: 0 !important;
+      margin-right: auto !important;
+    }
+  }
+  .accordion-collapse {
+    background-color: #d9d9d9;
+  }
+}

@@ -1,0 +1,21 @@
+// import Home from './pages/Home';
+// import SingleProduct from './pages/SingleProduct';
+// import ResetPassword from './pages/ResetPassword';
+// import IsAdminSupport from './components/shared-components/IsAdminSupport';
+// import CommonQuestions from './pages/CommonQuestions';
+// import Search from './pages/Search';
+// import Seller from './pages/Seller';
+
+// import RequireAuth from './components/shared-components/RequireAuth';
+// import Profile from './pages/Profile';
+// import Wallet from './pages/Wallet';
+// import EditProfile from './pages/EditProfile';
+// import Settings from './pages/Settings';
+
+// import FilterAds from './pages/FilterAds';
+// import PuplishProduct from './pages/PuplishProduct';
+// import Sell from './pages/Sell';
+// import Chat from './pages/Chat';
+// import SelectedChat from './pages/SelectedChat';
+// import EditAdd from './pages/EditAdd';
+// import EditPackage from './pages/EditPackage';

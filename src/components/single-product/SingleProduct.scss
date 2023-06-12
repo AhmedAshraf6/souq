@@ -1,0 +1,88 @@
+.single-product {
+  .swiper.my-swiper-images {
+    width: 100%;
+    height: 445px;
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      // height: 200px;
+      img {
+        display: block;
+
+        // height: 300px;
+        object-fit: cover;
+        @media (max-width: 576px) {
+          & {
+            width: 80% !important;
+          }
+        }
+      }
+    }
+    .swiper-button-prev {
+      background-image: url('../../assets/ICONs/rightwhar.png') !important;
+    }
+    .swiper-button-next {
+      background-image: url('../../assets/ICONs/whitearrowleft.png') !important;
+    }
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
+  .show-num {
+    color: #18b5f8;
+  }
+
+  // .swiper.mySwipercolor {
+  //   width: 100%;
+  //   height: 100px;
+  //   .swiper-button-prev {
+  //     background-image: url('../../assets/ICONs/rightardar.png') !important;
+  //   }
+  //   .swiper-button-next {
+  //     background-image: url('../../assets/ICONs/leftardr.png') !important;
+  //   }
+  // }
+  .video-upload {
+    height: 445px;
+  }
+  //global
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-size: 40px 40px;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    content: '' !important;
+  }
+  .hidden-num {
+    box-shadow: none !important;
+    border: 0 o !important;
+    background-color: transparent;
+    &:focus {
+      box-shadow: none !important;
+      border: none !important;
+      outline: 0 !important;
+    }
+  }
+}

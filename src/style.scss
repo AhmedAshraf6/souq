@@ -1,0 +1,172 @@
+$primary: #163a5f;
+$secondary: #00ffd2;
+$background: #e3f6f5;
+$info: #d9d9d9;
+@font-face {
+  font-family: 'myfont';
+  src: url(bd.ttf);
+}
+body {
+  font-family: 'myfont' !important;
+  direction: rtl;
+  overflow-x: hidden;
+  background-color: $background !important;
+  min-height: 100vh;
+  margin-top: 72px !important;
+
+  @media (max-width: 991px) {
+    & {
+      margin-top: 172px !important;
+    }
+  }
+}
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+// All Style Files
+@import '~bootstrap/scss/bootstrap.scss';
+@import './components/shared-components/Shared.scss';
+@import './components/home/Home.scss';
+@import './components/myads/MyAds.scss';
+@import './components/wallet/Wallet.scss';
+@import './components/edit-profile/EditProfile.scss';
+@import './components/puplish-product/PuplishProduct.scss';
+@import './components/edit-add/EditAds.scss';
+@import './components/edit-packages/EditPack.scss';
+@import './components/sell/SelectProduct.scss';
+@import './components/seller/Seller.scss';
+@import './components/login/Login.scss';
+@import './components/settings/MySettings.scss';
+@import './components/help/Help.scss';
+@import './components/common-questions/AllQuestions.scss';
+@import './components/support/Support.scss';
+@import './components/filter-ads/FilterAds.scss';
+@import './components/single-product/SingleProduct.scss';
+@import './components/chat/Chat.scss';
+@import './components/selected-chat/SelectedChat.scss';
+
+/* My own Custom Css*/
+// select {
+//   &:focus {
+//     box-shadow: none !important;
+//   }
+// }
+.image {
+  width: 60px;
+  height: 60px;
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+}
+.color-in-background {
+  background: $background;
+}
+.pointer {
+  cursor: pointer;
+}
+.navbar-icon,
+.heart {
+  width: 25px;
+  height: 25px;
+}
+Link {
+  text-decoration: none;
+}
+
+.padding-0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.icon-box {
+  .egypt-icon {
+    top: 5px;
+    left: 80px;
+    padding-left: 3px;
+    padding-right: 10px;
+    width: 39px;
+    height: 39px;
+  }
+}
+
+.icon {
+  width: 35px;
+  height: 35px;
+}
+.dropdown-toggle.removearrow {
+  & {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+.very-small-icon {
+  width: 15px;
+  height: 15px;
+}
+
+input.egypt {
+  display: block;
+  background: #fff url('./assets/ICONs/egypt.png') no-repeat 13px center;
+  background-size: 20px 20px;
+}
+.full-width {
+  @media (max-width: 992px) {
+    width: 100% !important;
+  }
+}
+.card {
+  .video-upload {
+    width: 200px;
+    height: 200px;
+  }
+}
+/* My own Custom Css*/
+
+/* links */
+.submenu {
+  background: #fff;
+  position: absolute;
+  top: 8rem;
+  left: 50%;
+  z-index: 99999;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: none;
+  min-width: 300px !important;
+  transition: 0.3s all ease;
+  .label-sub {
+    &:hover {
+      border-top: 2px solid $secondary;
+      border-bottom: 2px solid $secondary;
+    }
+  }
+}
+
+.submenu.show {
+  display: block;
+  // min-width: 100px !important;[
+}
+
+.submenu-center {
+  display: grid;
+}
+.col-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.submenu-center a {
+  display: block;
+  text-transform: capitalize;
+}
+.image-card {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+.chat-icon {
+  width: 25px;
+  height: 25px;
+}

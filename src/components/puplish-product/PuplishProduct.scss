@@ -1,0 +1,223 @@
+/* Puplish Product */
+.puplish-product {
+  .btn-close {
+    z-index: 3;
+  }
+  .radio-group {
+    .radio {
+      font-size: 18px;
+      font-weight: 500;
+      text-transform: capitalize;
+      display: inline-block;
+      vertical-align: middle;
+      color: #fff;
+      position: relative;
+      padding-left: 30px;
+      @media (max-width: 576px) {
+        & {
+          font-size: 13px !important;
+        }
+      }
+      input[type='radio'] {
+        display: none;
+      }
+      span {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        outline: 3px solid $light;
+        border: 2px solid $light;
+        outline-offset: 2px;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 7px;
+        @media (max-width: 576px) {
+          & {
+            height: 13px;
+            width: 13px;
+            top: 3px;
+          }
+        }
+        &::after {
+          content: '';
+          height: 16px;
+          width: 16px;
+          background: $light;
+          display: block;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          border-radius: 50%;
+          transition: 300ms ease-in-out 0s;
+        }
+      }
+      input[type='radio']:checked ~ span:after {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+    &.special {
+      .radio {
+        span {
+          outline: 3px solid $primary;
+          border: 2px solid $primary;
+          &::after {
+            background: $primary;
+          }
+        }
+      }
+    }
+  }
+  .explain {
+    .label-textarea {
+      @media (max-width: 576px) {
+        & {
+          font-size: 10px !important;
+        }
+      }
+    }
+    .custom-textarea {
+      height: 220px;
+    }
+  }
+  .video-upload {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    @media (max-width: 992px) {
+      & {
+        width: 100% !important;
+      }
+    }
+    .custom-video-upload {
+      position: absolute;
+      outline: none;
+      color: transparent;
+      // box-sizing: border-box;
+      &::-webkit-file-upload-button {
+        visibility: hidden;
+      }
+      &::after {
+        content: '';
+        background-image: url(../../assets/ICONs/playbutton.png);
+        background-size: 100% 100%;
+        width: 30px;
+        height: 30px;
+        display: block;
+        position: relative;
+        right: 47%;
+        top: 30%;
+      }
+    }
+  }
+  .video-container {
+    .btn-cancel {
+      @media (max-width: 992px) {
+        & {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+  input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .picture-upload {
+    height: 90px;
+    position: relative;
+    overflow: hidden;
+    .custom-picture-upload {
+      position: absolute;
+      outline: none;
+      color: transparent;
+      &::after {
+        content: '';
+        background-image: url(../../assets/ICONs/photocamera.png);
+        background-size: 100% 100%;
+        width: 30px;
+        height: 30px;
+        display: block;
+        position: relative;
+        right: 40%;
+        & {
+          @media (max-width: 576px) {
+            right: 45%;
+          }
+        }
+      }
+    }
+    .img-cover {
+      object-fit: cover;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  .method-contact {
+    .radio-contact {
+      width: 150px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+  .ads {
+    .box {
+      min-height: 180px;
+    }
+    h4 {
+      @media (max-width: 576px) {
+        & {
+          font-size: 13px !important;
+        }
+      }
+    }
+    h6 {
+      @media (max-width: 576px) {
+        & {
+          font-size: 11px !important;
+        }
+      }
+    }
+  }
+  .icon-box,
+  .citites {
+    @media (max-width: 992px) {
+      & {
+        width: 50% !important;
+      }
+    }
+    @media (max-width: 576px) {
+      & {
+        width: 100% !important;
+      }
+    }
+  }
+  input.form-control {
+    @media (max-width: 576px) {
+      & {
+        padding: 0.25rem 0.5rem !important;
+        font-size: 10px !important;
+      }
+    }
+  }
+  .form-select {
+    @media (max-width: 576px) {
+      & {
+        font-size: 10px !important;
+      }
+    }
+  }
+}
+.complete-ship {
+  .box {
+    // height: 200px;
+    min-height: 150px;
+  }
+}
+/* Puplish Product */

@@ -1,0 +1,299 @@
+/* Top Navbar */
+
+.top-navbar {
+  .logo {
+    object-fit: cover;
+    height: 40px;
+  }
+  .dropdown-menu {
+    width: 300px;
+
+    &.bill {
+      width: auto !important;
+      max-height: 300px;
+    }
+    .dropdown-item {
+      &:hover {
+        background-color: transparent;
+      }
+      color: #fff;
+    }
+  }
+  .custom-dropdown {
+    background-color: $background;
+    border: $background;
+    &:focus {
+      background: $background;
+    }
+    &.dropdown-toggle::after {
+      margin-right: 190px;
+    }
+  }
+  .custom-icon {
+    right: 10px;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .icon-positioned {
+    left: 8px;
+    width: 25px;
+    height: 25px;
+    top: 5px;
+    display: block;
+  }
+  .link {
+    color: #fff;
+    text-decoration: none;
+  }
+  input.search,
+  button.search {
+    display: block;
+    background: $background url('../../assets/ICONs/loupe.png') no-repeat 13px
+      center;
+    background-size: 20px 20px;
+  }
+
+  // TopNavbar-Small-Devices
+  .navbar-small-devices {
+    min-height: 100vh;
+    z-index: 3;
+    display: block;
+    overflow-y: hidden;
+  }
+  .form-select {
+    background-position: left 0.75rem center;
+  }
+  .image {
+    width: 60px;
+    height: 60px;
+  }
+  .location-dropdown {
+    .dropstart,
+    .dropdown {
+      .dropdown-toggle {
+        &::before,
+        &::after {
+          display: none;
+        }
+        .btn {
+          &:hover,
+          &:focus {
+            background: #fff;
+            border: transparent;
+          }
+        }
+      }
+    }
+    .dropdown-menu {
+      &.third-dropdown {
+        margin-right: 20px !important;
+        margin-top: -9px !important;
+      }
+    }
+    .reponsive-dropdown {
+      .dropdown-menu {
+        &.third-dropdown {
+          margin-left: 0 !important;
+          margin-top: 11px !important;
+        }
+      }
+    }
+    .cities {
+      height: 200px;
+    }
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+/* Top Navbar */
+
+/* Navbar */
+.mynavbar {
+  // margin-top: 71px;
+  .mySwiper {
+    .swiper-button-prev,
+    .swiper-button-next {
+      background-image: url('../../assets/ICONs/rightardar.png') !important;
+      background-size: 30px 30px;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .swiper-button-next {
+      background-image: url('../../assets/ICONs/leftardr.png') !important;
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      content: '';
+    }
+    .link-nav {
+      @media (max-width: 576px) {
+        font-size: 1rem !important;
+      }
+    }
+  }
+}
+/* Navbar */
+
+/* Footer */
+.footer {
+  .img-footer {
+    height: 35px;
+    width: 34px;
+  }
+  .icon {
+    width: 80px;
+    height: 50px;
+  }
+  // .download {
+  //   button {
+  //     width: 190px;
+  //   }
+  // }
+  .imgs {
+    .moved-image {
+      top: 18px;
+    }
+  }
+}
+/* Footer */
+
+/* Side Navbar */
+.side-navbar {
+  background: rgb(125, 125, 125, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  .small-nav {
+    background: #000c29;
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    overflow-y: auto;
+    @media (max-width: 992px) {
+      & {
+        width: 75%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      & {
+        width: 100%;
+      }
+    }
+  }
+  .link {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+.modal-backdrop {
+  display: none !important;
+}
+
+/* Side Navbar  */
+
+/* image model */
+.image-model {
+  position: fixed;
+  background: hsla(0, 0%, 49%, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  .btn-close {
+    position: fixed;
+    display: block;
+    z-index: 99999;
+    top: 9%;
+    right: 5%;
+  }
+  .swiper.my-swiper-images {
+    width: 100%;
+    height: 100%;
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      width: 100%;
+      height: 100%;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      // height: 200px;
+      .img {
+        img {
+          width: 80%;
+          height: 500px;
+          @media (max-width: 576px) {
+            & {
+              height: 300px;
+            }
+          }
+        }
+        // object-fit: cover;
+        @media (max-width: 576px) {
+          & {
+            width: 90% !important;
+          }
+        }
+      }
+    }
+    .swiper-button-prev {
+      background-image: url('../../assets/ICONs/rightardr.png') !important;
+      background-color: white;
+    }
+    .swiper-button-next {
+      background-image: url('../../assets/ICONs/xas.png') !important;
+      background-color: white;
+    }
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  //global
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-size: 40px 40px;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    content: '' !important;
+  }
+  .hidden-num {
+    box-shadow: none !important;
+    border: 0 o !important;
+    background-color: transparent;
+    &:focus {
+      box-shadow: none !important;
+      border: none !important;
+      outline: 0 !important;
+    }
+  }
+}
+
+/* image model */

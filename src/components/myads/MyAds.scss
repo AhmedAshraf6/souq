@@ -1,0 +1,29 @@
+/* Profile */
+.profile-com {
+  .navbar-icon {
+    top: 6px;
+    right: 10px;
+  }
+  .heart {
+    top: 6px;
+    left: 10px;
+  }
+  .settings {
+    .search {
+      display: block;
+      background: $background url('../../assets/ICONs/loupe.png') no-repeat 13px
+        center;
+      background-size: 20px 20px;
+      @media (max-width: 767px) {
+        width: 75% !important;
+      }
+      @media (max-width: 576px) {
+        width: 100% !important;
+      }
+    }
+  }
+  .info {
+    font-size: 13px;
+  }
+}
+/* Profile */

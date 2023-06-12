@@ -1,0 +1,46 @@
+.login {
+  .box {
+    & {
+      @media (max-width: 576px) {
+        width: 100% !important;
+      }
+    }
+  }
+  .phone-login {
+    .PhoneInputInput {
+      border: none !important;
+      outline: none !important;
+    }
+    .forget-pass {
+      color: #0029ff;
+    }
+    button {
+      @media (max-width: 576px) {
+        width: 100% !important;
+      }
+    }
+  }
+  .or {
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      width: 44%;
+      height: 1px;
+      background: #adb5bd;
+      left: 0;
+      top: 50%;
+      position: absolute;
+    }
+    &::after {
+      content: '';
+      display: block;
+      width: 44%;
+      height: 1px;
+      background: #adb5bd;
+      right: 0;
+      top: 50%;
+      position: absolute;
+    }
+  }
+}
