@@ -49,6 +49,10 @@ const Ad = ({
               className='img bg-info w-100  text-center'
               to={`/singleproduct/${id}`}
               state={prevLink.pathname ? prevLink.pathname : null}
+              style={{
+                backgroundImage: `${cover_photo && image_url + cover_photo}`,
+                backgroundSize: 'cover',
+              }}
             >
               <img
                 src={`${cover_photo && image_url + cover_photo}`}
@@ -88,7 +92,7 @@ const Ad = ({
         )}
 
         {/* start card */}
-        <div className='py-2 px-2  d-flex flex-sm-nowrap  justify-content-between align-items-center w-100'>
+        <div className='py-2 px-2  d-flex flex-sm-nowrap  justify-content-between align-items-center w-100 gap-2'>
           <h6>{title}</h6>
           <h6 className='text-secondary'>
             {/* {price} */}
@@ -111,7 +115,11 @@ const Ad = ({
               alt='person'
               className='rounded-circle avatar'
             />
-            <span className='text-nowrap'>{User.name}</span>
+            <span className='text-nowrap'>
+              {User.name.length > 10
+                ? User.name.slice(0, 10) + '...'
+                : User.name}
+            </span>
           </Link>
           <div
             className='w-100 me-2  text-decoration-none pointer'
@@ -124,11 +132,13 @@ const Ad = ({
                   alt='pination'
                   className='very-small-icon ms-1'
                 />
-                {location}
+                {location.length > 10
+                  ? location.slice(0, 10) + '...'
+                  : location}
               </address>
               <span className='text-primary info'>
                 <img src={view} alt='view' className='very-small-icon ms-1' />
-                {AdWatch && AdWatch} مشاهدة
+                {AdWatch && AdWatch}
               </span>
             </div>
           </div>

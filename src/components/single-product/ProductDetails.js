@@ -21,8 +21,14 @@ const ProductDetails = ({
 }) => {
   const [adTypeName, setAdTypeName] = useState('');
   const { userCurrency } = useMainContext();
+  const renderedPrice = price && price.toLocaleString();
+
   const fetchAdsType = async () => {
-    const res = await axios(ads_type_url);
+    const res = await axios(ads_type_url, {
+      headers: {
+        'Retry-After': '59',
+      },
+    });
     const a = res.data.data.find((ad) => ad_type == ad.id);
     if (a) {
       setAdTypeName(a.name_ar);
@@ -31,7 +37,6 @@ const ProductDetails = ({
   useEffect(() => {
     fetchAdsType();
   }, [id]);
-  // console.log(country_code);
 
   return (
     <div className='products-details mt-5'>
@@ -45,18 +50,22 @@ const ProductDetails = ({
                 {is_new == 1 ? 'جديد' : 'مستعمل'}
               </h5>
             </div>
-            {is_manual == 1 ? (
-              <div className='d-flex justify-content-between my-3  '>
-                <h5 className='text-white '>ناقل الحركة</h5>
-                <h5 className='text-secondary '>مانيوال</h5>
-              </div>
-            ) : (
-              is_manual == 0 && (
+            {Category && Category.sub_group == '1' ? (
+              is_manual == 1 ? (
                 <div className='d-flex justify-content-between my-3  '>
                   <h5 className='text-white '>ناقل الحركة</h5>
-                  <h5 className='text-secondary '>اتوماتيك</h5>
+                  <h5 className='text-secondary '>مانيوال</h5>
                 </div>
+              ) : (
+                is_manual == 0 && (
+                  <div className='d-flex justify-content-between my-3  '>
+                    <h5 className='text-white '>ناقل الحركة</h5>
+                    <h5 className='text-secondary '>اتوماتيك</h5>
+                  </div>
+                )
               )
+            ) : (
+              ''
             )}
 
             <div className='d-flex justify-content-between my-3  '>
@@ -68,7 +77,7 @@ const ProductDetails = ({
             <div className='d-flex justify-content-between my-3'>
               <h5 className='text-white  '>السعر</h5>
               <h5 className='text-secondary  '>
-                {price}
+                {renderedPrice}
                 {userCurrency}
               </h5>
             </div>

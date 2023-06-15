@@ -16,6 +16,7 @@ import Footer from '../components/shared-components/Footer';
 import Message from '../components/shared-components/Message';
 import RedirectToPage from '../components/shared-components/RedirectToPage';
 import { useUserContext } from '../contexts/UserProvider';
+import { useQuery } from 'react-query';
 const SingleProduct = () => {
   const { adid } = useParams();
   const [reqLoading, setReqLoading] = useState(false);
@@ -25,15 +26,27 @@ const SingleProduct = () => {
   const { toggleNavbarFunc, closeSubmenu, closeSearch } = useMainContext();
   const { singleAderror, singleAd, fetchSingleAd, singleAdLoading } =
     useAdsContext();
+
+  const fetchSingleProduct = (id) => {
+    return axios(`${single_product_url}${id}`);
+  };
+  const { isLoading, isError, error, data } = useQuery(
+    ['singlead', adid],
+    () => fetchSingleProduct(adid),
+    {
+      staleTime: 12000,
+    }
+  );
+
   useEffect(() => {
     toggleNavbarFunc(false);
     closeSubmenu(false);
     closeSearch();
     window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-    fetchSingleAd(`${single_product_url}${adid}`);
-  }, [adid]);
+  // useEffect(() => {
+  //   fetchSingleAd(`${single_product_url}${adid}`);
+  // }, [adid]);
   // Delete Ad
   const deleteAds = async () => {
     setReqLoading(true);
@@ -46,10 +59,10 @@ const SingleProduct = () => {
       setReqError(true);
     }
   };
-  if (singleAdLoading || reqLoading) {
+  if (isLoading || reqLoading) {
     return <Loading />;
   }
-  if (singleAderror || reqError) {
+  if (isError || reqError) {
     return <RequestError />;
   }
   return (
@@ -65,21 +78,21 @@ const SingleProduct = () => {
             <div className='container-fluid'>
               <div className='row gy-3 '>
                 <div className='col-lg-6'>
-                  <SwiperImages {...singleAd} />
+                  <SwiperImages {...data?.data.data} />
                 </div>
                 <div className='col-lg-6'>
-                  <SellerDetails {...singleAd} />
-                  <SellerDetails2 {...singleAd} />
+                  <SellerDetails {...data?.data.data} />
+                  <SellerDetails2 {...data?.data.data} />
                 </div>
               </div>
               <div className='row'>
                 <div className='col-lg-7'>
-                  <ProductDetails {...singleAd} />
+                  <ProductDetails {...data?.data.data} />
                 </div>
                 {/* This Component Only present if user come from myads Page which is authorized */}
-                {singleAd?.User?.id == userInfo.id && (
+                {data?.data.data?.User?.id == userInfo.id && (
                   <div className='col-lg-5'>
-                    <EditAdButtons deleteAds={deleteAds} {...singleAd} />
+                    <EditAdButtons deleteAds={deleteAds} {...data?.data.data} />
                   </div>
                 )}
               </div>

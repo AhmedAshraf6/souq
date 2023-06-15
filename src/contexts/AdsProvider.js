@@ -67,6 +67,7 @@ export const AdsProvider = ({ children }) => {
       if (allads.length < 20) {
         turnToSpecial();
       }
+      console.log(`prem ${allads}`);
     } catch (error) {
       dispatch({ type: GET_ALLADS_ERROR });
     }
@@ -145,6 +146,7 @@ export const AdsProvider = ({ children }) => {
         `${special_ads_url}${countryName}?page=${1}`
       );
       const allads = response.data.data.data;
+      console.log(`special ${allads}`);
       dispatch({
         type: 'TURN_TO_SPECIAL',
         payload: response.data.data.meta.last_page,
@@ -169,6 +171,7 @@ export const AdsProvider = ({ children }) => {
         `${paid_package_url}${countryName}?page=${1}`
       );
       const allads = response.data.data.data;
+      console.log(`paid ${allads}`);
       dispatch({
         type: 'TURN_TO_PAID_PACKAGE',
         payload: response.data.data.meta.last_page,
@@ -187,27 +190,22 @@ export const AdsProvider = ({ children }) => {
       dispatch({ type: GET_MORE_ADS_ERROR });
     }
   };
-  const turnToFree = async () => {
-    dispatch({ type: GET_MORE_ADS_LOADING });
+  const turnToFree = () => {
     if (state.allAds.length < 50) {
-      try {
-        const response = await axios.get(
-          `${allAdsUrl}${countryName}?page=${1}`
-        );
-        const resAds = response.data.data.data;
-        const allads = resAds.slice(0, 50 - state.allAds.length);
-        dispatch({
-          type: 'TURN_TO_FREE',
-          payload: response.data.data.meta.last_page,
-        });
-        dispatch({
-          type: GET_MORE_ADS,
-          payload: allads,
-          payload2: 2,
-        });
-      } catch (error) {
-        dispatch({ type: GET_MORE_ADS_ERROR });
-      }
+      const response = axios.get(`${allAdsUrl}${countryName}?page=${1}`);
+      const resAds = response.data.data.data;
+      const allads = resAds.slice(0, 50 - state.allAds.length);
+      dispatch({
+        type: 'TURN_TO_FREE',
+        payload: response.data.data.meta.last_page,
+      });
+      dispatch({
+        type: GET_MORE_ADS,
+        payload: allads,
+        payload2: 2,
+      });
+      console.log(`free ${allads}`);
+      return allads;
     }
   };
 
@@ -238,12 +236,7 @@ export const AdsProvider = ({ children }) => {
   };
   const fetchFavouriteIds = async () => {
     try {
-      const response = await axios(fav_ad_url, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios(fav_ad_url);
       const filteredIds = response.data.data.map((ad) => ad.advertisement_id);
       dispatch({
         type: FETCH_FAV_IDS,
@@ -257,13 +250,7 @@ export const AdsProvider = ({ children }) => {
     try {
       const response = await axios.post(
         fav_ad_url,
-        JSON.stringify({ ad_id: ad_id }),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        JSON.stringify({ ad_id: ad_id })
       );
       fetchFavouriteIds();
     } catch (error) {}
@@ -282,6 +269,7 @@ export const AdsProvider = ({ children }) => {
         turnToSpecial,
         turnToFree,
         turnToPaidPackage,
+        dispatch,
       }}
     >
       {children}

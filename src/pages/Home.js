@@ -18,7 +18,8 @@ const Home = () => {
     countryName,
     cityName,
   } = useMainContext();
-  const { fetchAllAds, fetchCityAds, fetchFavouriteIds } = useAdsContext();
+  const { fetchAllAds, fetchCityAds, fetchFavouriteIds, turnToFree } =
+    useAdsContext();
   const { token } = useUserContext();
   useEffect(() => {
     toggleNavbarFunc(false);
@@ -26,19 +27,19 @@ const Home = () => {
     closeSearch();
     window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-    token && fetchFavouriteIds();
-  }, [token]);
+  // useEffect(() => {
+  //   token && fetchFavouriteIds();
+  // }, [token]);
 
-  useEffect(() => {
-    if (countryName) {
-      fetchAllAds(countryName, 1);
-    } else if (cityName) {
-      fetchCityAds(cityName, 1);
-    } else {
-      fetchLocationIp();
-    }
-  }, [countryName, cityName]);
+  // useEffect(() => {
+  //   if (countryName) {
+  //     fetchAllAds(countryName, 1);
+  //   } else if (cityName) {
+  //     fetchCityAds(cityName, 1);
+  //   } else {
+  //     fetchLocationIp();
+  //   }
+  // }, [countryName, cityName]);
 
   return (
     <main className='home'>
