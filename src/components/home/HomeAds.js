@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Loading from '../shared-components/Loading';
 import { useAdsContext } from '../../contexts/AdsProvider';
 import Ad from './Ad';
@@ -26,87 +26,94 @@ const HomeNotSigned = () => {
     lastPage,
     isFree,
     isPaidPackage,
+    turnToSpecial2,
+    turnToPaidPackage2,
+    turnToFree2,
+    fetchMoreAds,
+    moreAdsLoading,
   } = useAdsContext();
   const [special, setSpecial] = useState(false);
   const [paid, setPaid] = useState(false);
   const [free, setFree] = useState(false);
-  const [admore, setAdMore] = useState(false);
+  // const [a, setA] = useState([]);
+  const [fetch, setFetch] = useState(false);
+
   const handleAdMore = () => {
     if (lastPage == currentPage - 1) {
       //   dispatch change isSpecial :true and currentPage = 1 and lastPage : 'as'
-      return turnToSpecial();
+      return turnToSpecial2();
     } else {
       if (lastPageSpecial == currentPage - 1) {
-        return turnToPaidPackage();
+        return turnToPaidPackage2();
       } else if (lastPagePaidPackage == currentPage - 1 && allAds.length < 50) {
-        return turnToFree();
+        return turnToFree2();
       } else {
         return fetchMoreAds();
       }
     }
   };
 
-  // Fetch Moore Ads
-  const fetchMoreAds = () => {
-    if (isSpecial) {
-      // special
-      const response = axios
-        .get(`${special_ads_url}${countryName}?page=1`)
-        .then((data) => {
-          console.log('admore special');
-          setSpecial(true);
-          dispatch({
-            type: GET_MORE_ADS,
-            payload: data.data.data.data,
-            payload2: currentPage + 1,
-          });
-          return data;
-        });
-      return response;
-    } else if (isPaidPackage) {
-      const response = axios
-        .get(`${paid_package_url}${countryName}?page=${currentPage}`)
-        .then((data) => {
-          console.log('admore paidpackage');
-          dispatch({
-            type: GET_MORE_ADS,
-            payload: data.data.data.data,
-            payload2: currentPage + 1,
-          });
-          return data;
-        });
-      return response;
-    } else if (isFree) {
-      if (allAds.length < 50) {
-        const response = axios
-          .get(`${allAdsUrl}${countryName}?page=${currentPage}`)
-          .then((data) => {
-            console.log('admore paidpackage');
-            dispatch({
-              type: GET_MORE_ADS,
-              payload: data.data.data.data.slice(0, 50 - allAds.length),
-              payload2: currentPage + 1,
-            });
-            return data;
-          });
-        return response;
-      }
-    } else {
-      // prem
-      const response = axios
-        .get(`${premium_ads_url}${countryName}?page=${currentPage}`)
-        .then((data) => {
-          console.log('admore paidpackage');
-          dispatch({
-            type: GET_MORE_ADS,
-            payload: data.data.data.data,
-            payload2: currentPage + 1,
-          });
-          return data;
-        });
-      return response;
-    }
-  };
+  // // Fetch Moore Ads
+  // const fetchMoreAds = () => {
+  //   if (isSpecial) {
+  //     // special
+  //     const response = axios
+  //       .get(`${special_ads_url}${countryName}?page=1`)
+  //       .then((data) => {
+  //         console.log('admore special');
+  //         setSpecial(true);
+  //         dispatch({
+  //           type: GET_MORE_ADS,
+  //           payload: data.data.data.data,
+  //           payload2: currentPage + 1,
+  //         });
+  //         return data;
+  //       });
+  //     return response;
+  //   } else if (isPaidPackage) {
+  //     const response = axios
+  //       .get(`${paid_package_url}${countryName}?page=${currentPage}`)
+  //       .then((data) => {
+  //         console.log('admore paidpackage');
+  //         dispatch({
+  //           type: GET_MORE_ADS,
+  //           payload: data.data.data.data,
+  //           payload2: currentPage + 1,
+  //         });
+  //         return data;
+  //       });
+  //     return response;
+  //   } else if (isFree) {
+  //     if (allAds.length < 50) {
+  //       const response = axios
+  //         .get(`${allAdsUrl}${countryName}?page=${currentPage}`)
+  //         .then((data) => {
+  //           console.log('admore free');
+  //           dispatch({
+  //             type: GET_MORE_ADS,
+  //             payload: data.data.data.data.slice(0, 50 - allAds.length),
+  //             payload2: currentPage + 1,
+  //           });
+  //           return data;
+  //         });
+  //       return response;
+  //     }
+  //   } else {
+  //     // prem
+  //     const response = axios
+  //       .get(`${premium_ads_url}${countryName}?page=${currentPage}`)
+  //       .then((data) => {
+  //         console.log('admore else');
+  //         dispatch({
+  //           type: GET_MORE_ADS,
+  //           payload: data.data.data.data,
+  //           payload2: currentPage + 1,
+  //         });
+  //         return data;
+  //       });
+  //     return response;
+  //   }
+  // };
   const fetchAllAds = () => {
     const response = axios
       .get(`${premium_ads_url}${countryName}?page=1`)
@@ -116,7 +123,7 @@ const HomeNotSigned = () => {
           setSpecial(true);
           dispatch({
             type: GET_ALLADS_SUCCESS,
-            payload: data.data.data.data,
+            payload: [],
             payload2: data.data.data.meta.last_page,
           });
           return data;
@@ -138,7 +145,7 @@ const HomeNotSigned = () => {
           });
           dispatch({
             type: GET_MORE_ADS,
-            payload: data.data.data.data,
+            payload: [],
             payload2: 2,
           });
           return data;
@@ -160,7 +167,7 @@ const HomeNotSigned = () => {
 
           dispatch({
             type: GET_MORE_ADS,
-            payload: data.data.data.data,
+            payload: [],
             payload2: 2,
           });
           return data;
@@ -178,13 +185,7 @@ const HomeNotSigned = () => {
         });
         dispatch({
           type: GET_MORE_ADS,
-          payload: data.data.data.data.slice(
-            0,
-            50 -
-              (prem?.data.data.data.length +
-                sp?.data.data.data.length +
-                pa?.data.data.data.length)
-          ),
+          payload: [],
           payload2: 2,
         });
         return data;
@@ -232,20 +233,29 @@ const HomeNotSigned = () => {
     staleTime: 12000,
   });
 
-  const {
-    isLoading: load5,
-    isError: err5,
-    data: admoreads,
-    error: error5,
-  } = useQuery('admoreads', handleAdMore, {
-    enabled: admore,
-    staleTime: 12000,
-  });
-
+  // const handleClick = () => {
+  //   setFetch(true);
+  //   refetch();
+  // };
+  // const {
+  //   isLoading: load5,
+  //   isError: err5,
+  //   data: admoreads,
+  //   error: error5,
+  //   refetch,
+  // } = useQuery('admoreads', handleAdMore, {
+  //   enabled: fetch,
+  //   refetchOnWindowFocus: false,
+  // });
+  // useEffect(() => {
+  //   if (admoreads?.data.data.data.length > 0) {
+  //     setA([...a, ...admoreads?.data.data.data]);
+  //   }
+  // }, [admoreads]);
   if (load || load2 || load3 || load4) {
     return <Loading />;
   }
-  if (err || err2 || err3 || err4 || err5) {
+  if (err || err2 || err3 || err4) {
     return <h2>error</h2>;
   }
 
@@ -256,6 +266,7 @@ const HomeNotSigned = () => {
         sp?.data.data.data.length +
         pa?.data.data.data.length)
   );
+
   return (
     <section className='home-not-signed color-in-background py-3'>
       <div className='container-fluid'>
@@ -282,17 +293,17 @@ const HomeNotSigned = () => {
                 <Ad {...ad} key={index} grid='col-md-6 col-lg-4 col-xl-3 ' />
               );
             })}
-            {admoreads?.data.data.data.map((ad, index) => {
+            {allAds?.map((ad, index) => {
               return (
                 <Ad {...ad} key={index} grid='col-md-6 col-lg-4 col-xl-3 ' />
               );
             })}
 
             <div className='text-center mt-3'>
-              {load5 && <Loading />}
+              {moreAdsLoading && <Loading />}
               <button
                 className='btn btn-light text-secondary fs-5 fw-bold px-4'
-                onClick={() => setAdMore(true)}
+                onClick={handleAdMore}
               >
                 المزيد
               </button>

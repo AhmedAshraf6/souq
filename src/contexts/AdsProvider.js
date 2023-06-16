@@ -65,7 +65,7 @@ export const AdsProvider = ({ children }) => {
         payload2: response.data.data.meta.last_page,
       });
       if (allads.length < 20) {
-        turnToSpecial();
+        turnToSpecial2();
       }
       console.log(`prem ${allads}`);
     } catch (error) {
@@ -139,11 +139,17 @@ export const AdsProvider = ({ children }) => {
     }
   };
 
-  const turnToSpecial = async () => {
+  const turnToSpecial2 = async () => {
     dispatch({ type: GET_MORE_ADS_LOADING });
     try {
       const response = await axios.get(
-        `${special_ads_url}${countryName}?page=${1}`
+        `${special_ads_url}${countryName}?page=${1}`,
+        {
+          headers: {
+            'Content-Type': 'text/html',
+            'Retry-After': 150,
+          },
+        }
       );
       const allads = response.data.data.data;
       console.log(`special ${allads}`);
@@ -157,18 +163,24 @@ export const AdsProvider = ({ children }) => {
         payload2: 2,
       });
       if (allads.length == 0) {
-        turnToPaidPackage();
+        turnToPaidPackage2();
         return;
       }
     } catch (error) {
       dispatch({ type: GET_MORE_ADS_ERROR });
     }
   };
-  const turnToPaidPackage = async () => {
+  const turnToPaidPackage2 = async () => {
     dispatch({ type: GET_MORE_ADS_LOADING });
     try {
       const response = await axios.get(
-        `${paid_package_url}${countryName}?page=${1}`
+        `${paid_package_url}${countryName}?page=${1}`,
+        {
+          headers: {
+            'Content-Type': 'text/html',
+            'Retry-After': 150,
+          },
+        }
       );
       const allads = response.data.data.data;
       console.log(`paid ${allads}`);
@@ -183,29 +195,35 @@ export const AdsProvider = ({ children }) => {
         payload2: 2,
       });
       if (allads.length == 0) {
-        turnToFree();
+        turnToFree2();
         return;
       }
     } catch (error) {
       dispatch({ type: GET_MORE_ADS_ERROR });
     }
   };
-  const turnToFree = () => {
+  const turnToFree2 = async () => {
+    dispatch({ type: GET_MORE_ADS_LOADING });
     if (state.allAds.length < 50) {
-      const response = axios.get(`${allAdsUrl}${countryName}?page=${1}`);
-      const resAds = response.data.data.data;
-      const allads = resAds.slice(0, 50 - state.allAds.length);
-      dispatch({
-        type: 'TURN_TO_FREE',
-        payload: response.data.data.meta.last_page,
-      });
-      dispatch({
-        type: GET_MORE_ADS,
-        payload: allads,
-        payload2: 2,
-      });
-      console.log(`free ${allads}`);
-      return allads;
+      try {
+        const response = await axios.get(
+          `${allAdsUrl}${countryName}?page=${1}`
+        );
+        const resAds = response.data.data.data;
+        const allads = resAds.slice(0, 50 - state.allAds.length);
+        dispatch({
+          type: 'TURN_TO_FREE',
+          payload: response.data.data.meta.last_page,
+        });
+        dispatch({
+          type: GET_MORE_ADS,
+          payload: allads,
+          payload2: 2,
+        });
+        console.log(`free ${allads}`);
+      } catch (error) {
+        dispatch({ type: GET_MORE_ADS_ERROR });
+      }
     }
   };
 
@@ -266,9 +284,9 @@ export const AdsProvider = ({ children }) => {
         fetchFavouriteIds,
         handleFavouriteAd,
         fetchCityAds,
-        turnToSpecial,
-        turnToFree,
-        turnToPaidPackage,
+        turnToSpecial2,
+        turnToFree2,
+        turnToPaidPackage2,
         dispatch,
       }}
     >
