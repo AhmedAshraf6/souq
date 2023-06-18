@@ -64,6 +64,7 @@ function App() {
                   path='categoryPage/:cat/:catid/'
                   element={<FilterAds />}
                 ></Route>
+                <Route path='categoryPage' element={<FilterAds />}></Route>
               </Route>
               <Route path='profile' element={<RequireAuth />}>
                 <Route path='myads' element={<Profile />} />

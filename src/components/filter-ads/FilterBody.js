@@ -16,7 +16,7 @@ const FilterBody = () => {
     useFilterContext();
 
   useEffect(() => {
-    fetchAdsBasedCat(subcatid ? subcatid : catid);
+    fetchAdsBasedCat(subcatid ? subcatid : catid ? catid : 6); // we put default cat id for cars
   }, [catid, subcatid, countryName, cityName]);
   useEffect(() => {
     window.scrollTo(0, 0);

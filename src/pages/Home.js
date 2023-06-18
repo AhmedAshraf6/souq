@@ -31,16 +31,6 @@ const Home = () => {
   //   token && fetchFavouriteIds();
   // }, [token]);
 
-  // useEffect(() => {
-  //   if (countryName) {
-  //     fetchAllAds(countryName, 1);
-  //   } else if (cityName) {
-  //     fetchCityAds(cityName, 1);
-  //   } else {
-  //     fetchLocationIp();
-  //   }
-  // }, [countryName, cityName]);
-
   return (
     <main className='home'>
       <HomeAds />

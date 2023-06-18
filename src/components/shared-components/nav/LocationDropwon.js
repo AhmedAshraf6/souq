@@ -8,12 +8,17 @@ import loupe from '../../../assets/ICONs/loupe.png';
 import mylocation from '../../../assets/ICONs/mylocation.png';
 import { useMainContext } from '../../../contexts/MainProvider';
 import { country_list_url } from '../../../utils/constants';
+import { Link, useLocation } from 'react-router-dom';
 
 const LocationDropwon = ({ removesearch }) => {
+  const userloc = JSON.parse(localStorage.getItem('userlocation'));
+
   const { handleCountryId, renderedWord, myLocationFunction, handleCityId } =
     useMainContext();
   const [countries, setCountries] = useState([]);
+  const location = useLocation();
   const [cities, setCities] = useState([]);
+
   // console.log(removesearch);
   const showed = useRef();
   const removeshow = () => {
@@ -48,7 +53,7 @@ const LocationDropwon = ({ removesearch }) => {
             </div>
           )}
           <span className='text-primary me-3 fw-bold text-wrap text-end'>
-            {renderedWord}
+            {location.pathname == '/' ? userloc.userCountryName : renderedWord}
           </span>
         </div>
         <img loading='lazy' src={dowarrow2} alt='dowarrow2' className='icon' />
@@ -94,15 +99,16 @@ const LocationDropwon = ({ removesearch }) => {
 
                   <ul className='cities dropdown-menu w-100 third-dropdown overflow-auto '>
                     <li className='d-flex justify-content-between align-items-center text-wrap text-end'>
-                      <button
+                      <Link
                         className='dropdown-item text-primary fw-bold'
                         type='button'
                         onClick={() => {
                           handleCountryId(country_code, name_ar, currency);
                         }}
+                        to='/categoryPage'
                       >
                         عرض اعلانات جميع المدن ب{name_ar}
-                      </button>
+                      </Link>
                     </li>
                     {cities &&
                       cities.length &&
@@ -114,7 +120,7 @@ const LocationDropwon = ({ removesearch }) => {
                             className='d-flex justify-content-between align-items-center text-wrap text-end'
                             key={city_id}
                           >
-                            <button
+                            <Link
                               className='dropdown-item text-primary'
                               type='button'
                               onClick={() => {
@@ -124,9 +130,10 @@ const LocationDropwon = ({ removesearch }) => {
                                   currency
                                 );
                               }}
+                              to='/categoryPage'
                             >
                               {name}
-                            </button>
+                            </Link>
                           </li>
                         );
                       })}

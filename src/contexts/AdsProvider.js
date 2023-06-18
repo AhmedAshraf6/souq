@@ -26,6 +26,8 @@ import { useMainContext } from './MainProvider';
 import { useUserContext } from './UserProvider';
 
 const initialState = {
+  ahmed: [],
+  ahmeddisable: false,
   allAds: [],
   allAdsLoading: false,
   allAdsError: false,

@@ -15,6 +15,12 @@ const AdsReducer = (state, action) => {
   if (action.type == GET_ALLADS_LOADING) {
     return { ...state, allAdsLoading: true };
   }
+  if (action.type == 'AHMED') {
+    return { ...state, ahmed: [...state.ahmed, ...action.payload] };
+  }
+  if (action.type == 'AHMEDDISABLE') {
+    return { ...state, ahmeddisable: true };
+  }
   if (action.type === GET_ALLADS_SUCCESS) {
     return {
       ...state,
