@@ -1,10 +1,6 @@
 import React from 'react';
 import leftarrow from '../../assets/ICONs/leftarrow.png';
-import {
-  image_cat_url,
-  image_url,
-  new_image_cat_url,
-} from '../../utils/constants';
+
 import { Link } from 'react-router-dom';
 const DesktopDropdown = ({ id: main_id, name_ar, image, rel }) => {
   return (
@@ -68,7 +64,10 @@ const DesktopDropdown = ({ id: main_id, name_ar, image, rel }) => {
                           className='navbar-icon'
                         />
                       </a>
-                      <ul className='dropdown-menu w-100 third-dropdown'>
+                      <ul
+                        className='dropdown-menu w-100 third-dropdown overflow-auto'
+                        style={{ maxHeight: '400px' }}
+                      >
                         {/* Third Level */}
                         {children.map((third) => {
                           const {

@@ -49,10 +49,6 @@ const Ad = ({
               className='img bg-info w-100  text-center'
               to={`/singleproduct/${id}`}
               state={prevLink.pathname ? prevLink.pathname : null}
-              style={{
-                backgroundImage: `${cover_photo && image_url + cover_photo}`,
-                backgroundSize: 'cover',
-              }}
             >
               <img
                 src={`${cover_photo && image_url + cover_photo}`}

@@ -4,6 +4,8 @@ import ShareLayout from './components/shared-components/ShareLayout';
 import Loading from './components/shared-components/Loading';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { ToastContainer } from 'react-toastify';
+
 // App Pages With Lazy load
 // Home
 const Home = lazy(() => import('./pages/Home'));
@@ -89,6 +91,7 @@ function App() {
           </Suspense>
         </HashRouter>
         <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
+        <ToastContainer />
       </QueryClientProvider>
     </div>
   );

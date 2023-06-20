@@ -97,7 +97,10 @@ const LocationDropwon = ({ removesearch }) => {
                     </span>
                   </button>
 
-                  <ul className='cities dropdown-menu w-100 third-dropdown overflow-auto '>
+                  <ul
+                    className='cities dropdown-menu w-100 third-dropdown overflow-auto '
+                    style={{ maxHeight: '400px' }}
+                  >
                     <li className='d-flex justify-content-between align-items-center text-wrap text-end'>
                       <Link
                         className='dropdown-item text-primary fw-bold'
@@ -117,7 +120,7 @@ const LocationDropwon = ({ removesearch }) => {
 
                         return (
                           <li
-                            className='d-flex justify-content-between align-items-center text-wrap text-end'
+                            className='d-flex justify-content-between align-items-center text-wrap text-end '
                             key={city_id}
                           >
                             <Link

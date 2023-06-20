@@ -16,7 +16,14 @@ const AdsReducer = (state, action) => {
     return { ...state, allAdsLoading: true };
   }
   if (action.type == 'AHMED') {
-    return { ...state, ahmed: [...state.ahmed, ...action.payload] };
+    const newarr = [...state.ahmed, ...action.payload];
+    const uniqueArray = (a) =>
+      [...new Set(a.map((o) => JSON.stringify(o)))].map((s) => JSON.parse(s));
+
+    return {
+      ...state,
+      ahmed: uniqueArray(newarr),
+    };
   }
   if (action.type == 'AHMEDDISABLE') {
     return { ...state, ahmeddisable: true };
@@ -33,26 +40,6 @@ const AdsReducer = (state, action) => {
     return { ...state, allAdsError: true, allAdsLoading: false };
   }
 
-  if (action.type === GET_SINGLE_PRODUCT_LOADING) {
-    return {
-      ...state,
-      singleAdLoading: true,
-    };
-  }
-  if (action.type === GET_SINGLE_PRODUCT_SUCCESS) {
-    return {
-      ...state,
-      singleAdLoading: false,
-      singleAd: action.payload,
-    };
-  }
-  if (action.type === GET_SINGLE_PRODUCT_ERROR) {
-    return {
-      ...state,
-      singleAdLoading: false,
-      singleAdError: true,
-    };
-  }
   if (action.type === GET_MORE_ADS) {
     return {
       ...state,
@@ -102,6 +89,16 @@ const AdsReducer = (state, action) => {
       ...state,
       favAdsIds: action.payload,
       favAdsIdsInFavouritePage: action.payload2,
+    };
+  }
+  if (action.type === 'FAVIDCLICKED') {
+    const filterFavId = state.favAdsIdsInFavouritePage.filter(
+      (ad) => ad.advertisement_id !== action.payload
+    );
+    return {
+      ...state,
+      favidclicked: action.payload,
+      favAdsIdsInFavouritePage: filterFavId,
     };
   }
   throw new Error(`No Matching "${action.type}" - action type`);

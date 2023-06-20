@@ -27,9 +27,6 @@ const Home = () => {
     closeSearch();
     window.scrollTo(0, 0);
   }, []);
-  // useEffect(() => {
-  //   token && fetchFavouriteIds();
-  // }, [token]);
 
   return (
     <main className='home'>

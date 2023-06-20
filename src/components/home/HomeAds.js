@@ -7,14 +7,17 @@ import RequestError from '../shared-components/RequestError';
 import { useQuery } from 'react-query';
 import {
   allAdsUrl,
+  fav_ad_url,
   paid_package_url,
   premium_ads_url,
   special_ads_url,
 } from '../../utils/constants';
 import axios from 'axios';
-import { GET_ALLADS_SUCCESS, GET_MORE_ADS } from '../../actions';
+import { FETCH_FAV_IDS, GET_ALLADS_SUCCESS, GET_MORE_ADS } from '../../actions';
+import { useUserContext } from '../../contexts/UserProvider';
 
 const HomeNotSigned = () => {
+  const { token } = useUserContext();
   const userloc = JSON.parse(localStorage.getItem('userlocation'));
   const {
     dispatch,
@@ -32,6 +35,7 @@ const HomeNotSigned = () => {
     ahmeddisable,
     ahmed,
     moreAdsLoading,
+    favidclicked,
   } = useAdsContext();
   const [special, setSpecial] = useState(false);
   const [paid, setPaid] = useState(false);
@@ -252,11 +256,38 @@ const HomeNotSigned = () => {
     refetchOnWindowFocus: false,
     staleTime: 120000,
   });
+  // Fetch Favourite
+  const fetchFavouriteIds = () => {
+    const response = axios(fav_ad_url, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((data) => {
+      const filteredIds = data.data.data.map((ad) => ad.advertisement_id);
+      console.log(data.data.data);
+      dispatch({
+        type: FETCH_FAV_IDS,
+        payload: filteredIds,
+        payload2: data.data.data,
+      });
+      return data;
+    });
+    // console.log(response);
+    return response;
+  };
+  const {
+    isLoading: loadfav,
+    isError: errorfav,
+    data: favads,
+  } = useQuery(['favads', favidclicked], fetchFavouriteIds);
+
   useEffect(() => {
     if (!ahmeddisable && admoreads?.data.data.data) {
       dispatch({
         type: 'AHMED',
         payload: admoreads.data.data.data,
+        payload2: admoreads.data.data.data.length,
       });
     }
     if (isClicked && admoreads?.data.data.data == 0) {
@@ -313,7 +344,7 @@ const HomeNotSigned = () => {
             })}
 
             <div className='text-center mt-3'>
-              {moreAdsLoading && <Loading />}
+              {load5 && <Loading />}
               <button
                 className='btn btn-light text-secondary fs-5 fw-bold px-4'
                 onClick={handleClick}
