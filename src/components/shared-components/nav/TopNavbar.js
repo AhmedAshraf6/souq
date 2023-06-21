@@ -7,11 +7,17 @@ import Signed from './Signed';
 import NotSigned from './NotSigned';
 import { useUserContext } from '../../../contexts/UserProvider';
 import ads from '../../../assets/ICONs/ads.png';
+import loc from '../../../assets/ICONs/pin.png';
 import { Link } from 'react-router-dom';
 
 const TopNavbar = () => {
   const { closeSubmenu, toggleNavbarFunc } = useMainContext();
-  const { token } = useUserContext();
+  const {
+    token,
+    userInfo: { name },
+  } = useUserContext();
+  const userloc = JSON.parse(localStorage.getItem('userlocation'));
+
   return (
     <section
       className='top-navbar py-3 bg-white fixed fixed-top '
@@ -26,11 +32,23 @@ const TopNavbar = () => {
             </Link>
           </div>
           {/* Location DropDown */}
-          <div className=' col-lg-4'>
-            <LocationDropwon />
+          <div className=' col-lg-3'>
+            {/* <LocationDropwon /> */}
+            <div className='d-flex flex-wrap gap-3 align-items-center justify-content-center text-primary'>
+              <span>مرحبا {name && name}</span>
+              <div className='fw-bold'>
+                {userloc.userCountryName}
+                <img
+                  loading='lazy'
+                  src={loc}
+                  alt='location'
+                  className='navbar-icon'
+                />
+              </div>
+            </div>
           </div>
           {/* Search */}
-          <div className=' col-lg-3'>
+          <div className=' col-lg-4'>
             <SearchInput />
           </div>
           <div className=' col-lg-3'>
@@ -61,8 +79,19 @@ const TopNavbar = () => {
         <div className='mt-2 mx-3 '>
           <SearchInput />
         </div>
-        <div className='mt-3 mx-3'>
-          <LocationDropwon />
+        <div className='mt-4 mx-3'>
+          <div className='d-flex flex-wrap gap-3 align-items-center justify-content-center text-primary'>
+            <span>مرحبا {name && name}</span>
+            <div className='fw-bold'>
+              {userloc.userCountryName}
+              <img
+                loading='lazy'
+                src={loc}
+                alt='location'
+                className='navbar-icon'
+              />
+            </div>
+          </div>
         </div>
       </div>
       {/* Start Tablet And Phones */}

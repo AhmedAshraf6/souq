@@ -30,11 +30,9 @@ import { useUserContext } from './UserProvider';
 const initialState = {
   ahmed: [],
   ahmeddisable: false,
+  renderdCountry: '',
   favidclicked: '',
   allAds: [],
-  allAdsLoading: false,
-  allAdsError: false,
-  moreAdsLoading: false,
   currentPage: 2,
   lastPage: '',
   lastPageSpecial: '',
@@ -42,15 +40,17 @@ const initialState = {
   lastPagePaidPackage: '',
   isPaidPackage: false,
   isFree: false,
+  currencySingleAd: '',
   favAdsIds: [],
   favAdsIdsInFavouritePage: [],
-  currencySingleAd: '',
 };
 
 const AdsContext = createContext();
 
 export const AdsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AdsReducer, initialState);
+  const { countryName } = useMainContext();
+
   const { token } = useUserContext();
 
   const fetchCityAds = async (city, page = state.currentPage) => {
@@ -97,7 +97,13 @@ export const AdsProvider = ({ children }) => {
       }
     } catch (error) {}
   };
-
+  useEffect(() => {
+    countryName &&
+      dispatch({
+        type: 'RENDERCOUNTRY',
+        payload: countryName,
+      });
+  }, [countryName]);
   return (
     <AdsContext.Provider
       value={{

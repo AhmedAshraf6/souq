@@ -12,8 +12,22 @@ import {
 } from '../actions';
 
 const AdsReducer = (state, action) => {
-  if (action.type == GET_ALLADS_LOADING) {
-    return { ...state, allAdsLoading: true };
+  if (action.type === 'RENDERCOUNTRY') {
+    return {
+      ...state,
+      ahmed: [],
+      ahmeddisable: false,
+      renderdCountry: action.payload,
+      favidclicked: '',
+      allAds: [],
+      currentPage: 2,
+      lastPage: '',
+      lastPageSpecial: '',
+      isSpecial: false,
+      lastPagePaidPackage: '',
+      isPaidPackage: false,
+      isFree: false,
+    };
   }
   if (action.type == 'AHMED') {
     const newarr = [...state.ahmed, ...action.payload];
@@ -31,8 +45,6 @@ const AdsReducer = (state, action) => {
   if (action.type === GET_ALLADS_SUCCESS) {
     return {
       ...state,
-      allAdsLoading: false,
-      allAdsError: false,
       lastPage: action.payload2,
     };
   }

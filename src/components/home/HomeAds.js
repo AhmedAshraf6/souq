@@ -208,7 +208,7 @@ const HomeNotSigned = () => {
     data: prem,
     error,
   } = useQuery('ads', fetchAllAds, {
-    staleTime: 12000,
+    staleTime: 120000,
   });
 
   const {
@@ -218,7 +218,7 @@ const HomeNotSigned = () => {
     error: error2,
   } = useQuery('adsspecial', turnToSpecial, {
     enabled: special,
-    staleTime: 12000,
+    staleTime: 120000,
   });
   const {
     isLoading: load3,
@@ -227,7 +227,7 @@ const HomeNotSigned = () => {
     error: error3,
   } = useQuery('adspaid', turnToPaidPackage, {
     enabled: paid,
-    staleTime: 12000,
+    staleTime: 120000,
   });
 
   const {
@@ -237,7 +237,7 @@ const HomeNotSigned = () => {
     error: error4,
   } = useQuery('adsfree', turnToFree, {
     enabled: free,
-    staleTime: 12000,
+    staleTime: 120000,
   });
 
   const handleClick = () => {
@@ -282,20 +282,20 @@ const HomeNotSigned = () => {
     data: favads,
   } = useQuery(['favads', favidclicked], fetchFavouriteIds);
 
-  useEffect(() => {
-    if (!ahmeddisable && admoreads?.data.data.data) {
-      dispatch({
-        type: 'AHMED',
-        payload: admoreads.data.data.data,
-        payload2: admoreads.data.data.data.length,
-      });
-    }
-    if (isClicked && admoreads?.data.data.data == 0) {
-      dispatch({
-        type: 'AHMEDDISABLE',
-      });
-    }
-  }, [admoreads]);
+  // useEffect(() => {
+  //   if (!ahmeddisable && admoreads?.data.data.data) {
+  //     dispatch({
+  //       type: 'AHMED',
+  //       payload: admoreads.data.data.data,
+  //       payload2: admoreads.data.data.data.length,
+  //     });
+  //   }
+  //   if (isClicked && admoreads?.data.data.data == 0) {
+  //     dispatch({
+  //       type: 'AHMEDDISABLE',
+  //     });
+  //   }
+  // }, [admoreads]);
 
   if (load || load2 || load3 || load4) {
     return <Loading />;
@@ -337,7 +337,7 @@ const HomeNotSigned = () => {
                 <Ad {...ad} key={index} grid='col-md-6 col-lg-4 col-xl-3 ' />
               );
             })}
-            {ahmed?.map((ad, index) => {
+            {admoreads?.data.data.data.map((ad, index) => {
               return (
                 <Ad {...ad} key={index} grid='col-md-6 col-lg-4 col-xl-3 ' />
               );
