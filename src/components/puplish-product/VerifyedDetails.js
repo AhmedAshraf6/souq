@@ -15,7 +15,7 @@ const VerifyedDetails = ({
   const [cities, setCities] = useState([]);
   const { currentLocationId } = useMainContext();
   const { namecat } = useParams();
-  // console.log(nameselect);
+  // (nameselect);
 
   const fetchAdsType = async () => {
     const res = await axios(ads_type_url);
@@ -25,7 +25,7 @@ const VerifyedDetails = ({
     const res = await axios(`${cities_id_url}${currentLocationId}`);
     setCities(res.data.data);
 
-    // console.log(res);
+    // (res);
   };
   useEffect(() => {
     fetchAdsType();

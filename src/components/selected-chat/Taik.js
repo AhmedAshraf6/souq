@@ -24,7 +24,7 @@ const Taik = () => {
   const { chatId, sellerCalled } = useSellerCalledContext();
   const { userInfo } = useUserContext();
 
-  // console.log(img);
+  // (img);
   const handleSubmit = async () => {
     if (textMessage) {
       setTextMessage('');
@@ -99,7 +99,7 @@ const Taik = () => {
   const handleKey = (e) => {
     e.code === 'Enter' && handleSubmit();
   };
-  // console.log(userCalled);
+  // (userCalled);
   return (
     <div className='overflow-auto'>
       <ChatSpace />

@@ -17,20 +17,20 @@ const OtherMethods = ({ setShowPhone }) => {
   // const clientId =
   //   '979484814823-2bt5eclc417bicv43v0ualeb2qmj168p.apps.googleusercontent.com';
   // const onSuccess = async (res) => {
-  //   console.log(res);
+  //   (res);
   //   try {
   //     const response = await axios(social_login, {
   //       headers: {
   //         'Content-Type': 'application/json',
   //       },
   //     });
-  //     console.log(response);
+  //     (response);
   //   } catch (error) {
-  //     console.log(error);
+  //     (error);
   //   }
   // };
   // const onFailure = (res) => {
-  //   console.log(res);
+  //   (res);
   // };
   // useEffect(() => {
   //   const start = () => {

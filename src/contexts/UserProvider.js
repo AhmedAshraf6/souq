@@ -157,7 +157,7 @@ export const UserProvider = ({ children }) => {
         payload3: response.data.data.meta.last_page,
         payload4: url,
       });
-      // console.log(response.data.data);
+      // (response.data.data);
     } catch (error) {
       dispatch({ type: GET_USERADS_ERROR });
     }

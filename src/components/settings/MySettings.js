@@ -33,7 +33,7 @@ const MySettings = () => {
       setLoading(false);
       setSuccess(true);
     } catch (error) {
-      // console.log(error);
+      // (error);
       setLoading(false);
       setErrorRequest(true);
     }

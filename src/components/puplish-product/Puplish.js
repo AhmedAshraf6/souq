@@ -164,7 +164,7 @@ const Puplish = () => {
   useEffect(() => {
     tooglePicVid();
   }, [formValues.upload]);
-  // console.log(sendeddata);
+  // (sendeddata);
   const handleRequest = async (url) => {
     setLoading(true);
     let fd = new FormData();

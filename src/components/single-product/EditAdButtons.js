@@ -5,7 +5,7 @@ const EditAdButtons = ({ deleteAds }) => {
   const { adid } = useParams();
   // let currentdate = new Date();
   // let dateAd = new Date(created_at);
-  // console.log(days);
+  // (days);
 
   // const diffDays = Math.ceil((currentdate - dateAd) / (1000 * 60 * 60 * 24));
 

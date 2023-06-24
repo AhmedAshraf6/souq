@@ -172,11 +172,11 @@ const EditProfile = () => {
       setLoading(false);
       setEditSuccess(true);
 
-      // console.log(values);
+      // (values);
     } catch (error) {
       setLoading(false);
 
-      // console.log(values);
+      // (values);
     }
   };
 

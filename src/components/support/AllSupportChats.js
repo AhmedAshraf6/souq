@@ -34,7 +34,7 @@ const AllSupportChats = ({ supportChats }) => {
       {Object.entries(supportChats)
         ?.sort((a, b) => b[1].date - a[1].date)
         .map((chat) => {
-          // console.log(chat[0]);
+          // (chat[0]);
           return (
             <div
               className='box text-decoration-none bg-light rounded mx-1 text-primary d-flex justify-content-between flex-column flex-sm-row py-3 mt-3 pointer'

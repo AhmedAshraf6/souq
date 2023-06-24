@@ -95,7 +95,7 @@ const FilterProvider = ({ children }) => {
         const res = await axios(
           `${category_filter_url}/${catid}/${countryName}`
         );
-        // console.log(state.filterLoaded);
+        // (state.filterLoaded);
         dispatch({
           type: GET_CATEGORY_SUCCESS,
           payload: res.data.data.data,

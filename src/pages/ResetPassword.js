@@ -49,7 +49,7 @@ const ResetPassword = () => {
       }
 
       // setFormErrors({...formErrors,})
-      // console.log(error);
+      // (error);
     }
   };
   const handleSubmit = (e) => {

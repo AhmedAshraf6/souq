@@ -17,7 +17,7 @@ import { useUserContext } from '../../contexts/UserProvider';
 const Info = () => {
   const { sellerCalled, sellerName, sellerImage, sellerPhone } =
     useSellerCalledContext();
-  console.log(sellerPhone);
+  const replacedPhone = sellerPhone.replace('+', '');
   const { setIsClickedFunc } = useUserContext();
   return (
     <div className='info'>
@@ -36,7 +36,7 @@ const Info = () => {
         <div className='d-flex flex-column gap-2'>
           {sellerPhone && (
             <a
-              href={`//api.whatsapp.com/send?phone=${sellerPhone}`}
+              href={`//api.whatsapp.com/send?phone=${replacedPhone}`}
               target='_blank'
             >
               <img loading='lazy' src={whatts} alt='whatts' className='icon ' />

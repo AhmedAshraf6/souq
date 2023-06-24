@@ -16,7 +16,7 @@ const Notifications = ({ setNotsCounter, notsCounter, setKey }) => {
   useEffect(() => {
     onValue(ref(realTimedb), (snapshot) => {
       const data = snapshot.val();
-      // console.log(data.notification.types);
+      // (data.notification.types);
       let a = [];
       let x = 0;
       if (data !== null) {

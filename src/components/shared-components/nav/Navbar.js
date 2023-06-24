@@ -26,7 +26,7 @@ const Navbar = () => {
       closeSubmenu();
     }
   };
-  // console.log(sublinks);
+  // (sublinks);
   return (
     <nav
       className='mynavbar w-100 text-center bg-white  border-top border-2 px-5'

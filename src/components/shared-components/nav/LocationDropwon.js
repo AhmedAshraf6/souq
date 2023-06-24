@@ -19,7 +19,7 @@ const LocationDropwon = ({ removesearch }) => {
   const location = useLocation();
   const [cities, setCities] = useState([]);
 
-  // console.log(removesearch);
+  // (removesearch);
   const showed = useRef();
   const removeshow = () => {
     showed.current.classList.remove('show');

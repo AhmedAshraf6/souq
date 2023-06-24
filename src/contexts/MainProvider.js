@@ -114,9 +114,7 @@ const MainProvider = ({ children }) => {
           },
         }
       );
-      // console.log(
-      //   JSON.stringify({ name: val, country_code: state.countryName })
-      // );
+
       dispatch({ type: GET_SEARCH_SUCCES, payload: response.data.data.data });
     } catch (error) {
       dispatch({
@@ -198,9 +196,7 @@ const MainProvider = ({ children }) => {
           currency,
         })
       );
-    } catch (error) {
-      console.log('error');
-    }
+    } catch (error) {}
   };
 
   // Handle city Id Of User

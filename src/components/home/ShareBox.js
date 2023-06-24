@@ -17,7 +17,7 @@ import share from '../../assets/ICONs/share.png';
 import w from '../../assets/ICONs/w.png';
 
 const ShareBox = ({ text, url, image, quote }) => {
-  // console.log(url);
+  // (url);
 
   return (
     <div className='dropdown pointer'>

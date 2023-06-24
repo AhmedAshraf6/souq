@@ -21,7 +21,7 @@ const TaukSupport = () => {
   const { chatId } = useSupportContext();
   const { userInfo } = useUserContext();
 
-  // console.log(img);
+  // (img);
   const handleSubmit = async () => {
     if (textMessage) {
       try {

@@ -60,7 +60,6 @@ const HomeNotSigned = () => {
       const response = axios
         .get(`${special_ads_url}${userloc.userCountryName}?page=1`)
         .then((data) => {
-          console.log('admore special');
           dispatch({
             type: GET_MORE_ADS,
             payload: data.data.data.data,
@@ -75,7 +74,6 @@ const HomeNotSigned = () => {
           `${paid_package_url}${userloc.userCountryName}?page=${currentPage}`
         )
         .then((data) => {
-          console.log('admore paidpackage');
           dispatch({
             type: GET_MORE_ADS,
             payload: data.data.data.data,
@@ -89,7 +87,6 @@ const HomeNotSigned = () => {
         const response = axios
           .get(`${allAdsUrl}${userloc.userCountryName}?page=${currentPage}`)
           .then((data) => {
-            console.log('admore free');
             dispatch({
               type: GET_MORE_ADS,
               payload: data.data.data.data.slice(0, 50 - allAds.length),
@@ -104,7 +101,6 @@ const HomeNotSigned = () => {
       const response = axios
         .get(`${premium_ads_url}${userloc.userCountryName}?page=${currentPage}`)
         .then((data) => {
-          console.log('admore else');
           dispatch({
             type: GET_MORE_ADS,
             payload: data.data.data.data,
@@ -121,7 +117,6 @@ const HomeNotSigned = () => {
       .get(`${premium_ads_url}${userloc.userCountryName}?page=1`)
       .then((data) => {
         if (data.data.data.data.length < 20) {
-          console.log('prem');
           setSpecial(true);
           dispatch({
             type: GET_ALLADS_SUCCESS,
@@ -140,7 +135,6 @@ const HomeNotSigned = () => {
       .get(`${special_ads_url}${userloc.userCountryName}?page=1`)
       .then((data) => {
         if (data.data.data.data.length == 0) {
-          console.log('special Ad More');
           dispatch({
             type: 'TURN_TO_SPECIAL',
             payload: data.data.data.meta.last_page,
@@ -160,7 +154,6 @@ const HomeNotSigned = () => {
       .get(`${paid_package_url}${userloc.userCountryName}?page=1`)
       .then((data) => {
         if (data.data.data.data.length == 0) {
-          console.log(`paid AdMore`);
           dispatch({
             type: 'TURN_TO_PAID_PACKAGE',
             payload: data.data.data.meta.last_page,
@@ -192,7 +185,6 @@ const HomeNotSigned = () => {
         return data;
       });
 
-    console.log(`free Ad More`);
     return response;
   };
   const handleClick = () => {
@@ -206,7 +198,6 @@ const HomeNotSigned = () => {
       .get(`${special_ads_url}${userloc.userCountryName}?page=1`)
       .then((data) => {
         if (data.data.data.data.length == 0) {
-          console.log('special');
           setPaid(true);
           dispatch({
             type: 'TURN_TO_SPECIAL',
@@ -227,7 +218,6 @@ const HomeNotSigned = () => {
       .get(`${paid_package_url}${userloc.userCountryName}?page=1`)
       .then((data) => {
         if (data.data.data.data.length == 0) {
-          console.log(`paid `);
           setFree(true);
           dispatch({
             type: 'TURN_TO_PAID_PACKAGE',
@@ -260,7 +250,6 @@ const HomeNotSigned = () => {
         return data;
       });
 
-    console.log(`free`);
     return response;
   };
 
@@ -327,7 +316,6 @@ const HomeNotSigned = () => {
       },
     }).then((data) => {
       const filteredIds = data.data.data.map((ad) => ad.advertisement_id);
-      console.log(data.data.data);
       dispatch({
         type: FETCH_FAV_IDS,
         payload: filteredIds,
@@ -335,7 +323,6 @@ const HomeNotSigned = () => {
       });
       return data;
     });
-    // console.log(response);
     return response;
   };
   const {
@@ -398,7 +385,6 @@ const HomeNotSigned = () => {
                     pa?.data.data.data.length)
               )
               .map((ad, index) => {
-                console.log(ad);
                 return (
                   <Ad {...ad} key={index} grid='col-md-6 col-lg-4 col-xl-3 ' />
                 );
