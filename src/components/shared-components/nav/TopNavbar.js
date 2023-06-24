@@ -37,7 +37,7 @@ const TopNavbar = () => {
             <div className='d-flex flex-wrap gap-3 align-items-center justify-content-center text-primary'>
               <span>مرحبا {name && name}</span>
               <div className='fw-bold'>
-                {userloc.userCountryName}
+                {userloc?.userCountryName}
                 <img
                   loading='lazy'
                   src={loc}
@@ -83,7 +83,7 @@ const TopNavbar = () => {
           <div className='d-flex flex-wrap gap-3 align-items-center justify-content-center text-primary'>
             <span>مرحبا {name && name}</span>
             <div className='fw-bold'>
-              {userloc.userCountryName}
+              {userloc?.userCountryName}
               <img
                 loading='lazy'
                 src={loc}

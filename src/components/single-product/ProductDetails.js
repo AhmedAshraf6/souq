@@ -18,9 +18,11 @@ const ProductDetails = ({
   Category,
   brand,
   category_id,
+  country_code,
 }) => {
   const [adTypeName, setAdTypeName] = useState('');
-  const { userCurrency } = useMainContext();
+  const { currency } = useMainContext();
+  const userloc = JSON.parse(localStorage.getItem('userlocation'));
   const renderedPrice = price && price.toLocaleString();
 
   const fetchAdsType = async () => {
@@ -78,7 +80,9 @@ const ProductDetails = ({
               <h5 className='text-white  '>السعر</h5>
               <h5 className='text-secondary  '>
                 {renderedPrice}
-                {userCurrency}
+                {country_code == userloc?.userCountryName
+                  ? userloc?.userCurrency
+                  : currency}
               </h5>
             </div>
             <div className='d-flex justify-content-between my-3  '>

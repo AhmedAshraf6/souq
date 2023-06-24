@@ -231,10 +231,11 @@ const Puplish = () => {
   };
   // fetch address location
   const fetchLocation = () => {
-    const userlocation = JSON.parse(localStorage.getItem('userloc'));
+    const userloc = JSON.parse(localStorage.getItem('userlocation'));
+
     return setFormValues({
       ...formValues,
-      address: `${userlocation.countryname} ، ${userlocation.city}`,
+      address: `${userloc?.userCountryName} `,
     });
   };
   // HandleChange In files images

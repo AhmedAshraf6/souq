@@ -15,7 +15,8 @@ import RetrivePasswordPhone from './RetrivePasswordPhone';
 const SignInWithPhone = () => {
   const { handleTokenRequest, handleLoading, isLoading } = useUserContext();
   const [foregetPass, setForgetPass] = useState(false);
-
+  // ٢٠١٠٠٠٨٩٠١٩٢
+  // 123456
   // Handel Api
   const makeRequest = async (url) => {
     handleLoading(true);
@@ -36,6 +37,7 @@ const SignInWithPhone = () => {
         'login',
         JSON.stringify({ token: response.data.data.token })
       );
+      console.log(response);
     } catch (error) {
       handleLoading(false);
       if (!error.response) {
@@ -54,6 +56,7 @@ const SignInWithPhone = () => {
           anotherError: 'خطأ ما حدث حاول مرة أخري',
         });
       }
+      console.log(error);
     }
   };
   const initialValues = {

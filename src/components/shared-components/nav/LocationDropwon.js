@@ -102,16 +102,15 @@ const LocationDropwon = ({ removesearch }) => {
                     style={{ maxHeight: '400px' }}
                   >
                     <li className='d-flex justify-content-between align-items-center text-wrap text-end'>
-                      <Link
+                      <button
                         className='dropdown-item text-primary fw-bold'
                         type='button'
                         onClick={() => {
                           handleCountryId(country_code, name_ar, currency);
                         }}
-                        to='/categoryPage'
                       >
                         عرض اعلانات جميع المدن ب{name_ar}
-                      </Link>
+                      </button>
                     </li>
                     {cities &&
                       cities.length &&
@@ -123,7 +122,7 @@ const LocationDropwon = ({ removesearch }) => {
                             className='d-flex justify-content-between align-items-center text-wrap text-end '
                             key={city_id}
                           >
-                            <Link
+                            <button
                               className='dropdown-item text-primary'
                               type='button'
                               onClick={() => {
@@ -133,10 +132,9 @@ const LocationDropwon = ({ removesearch }) => {
                                   currency
                                 );
                               }}
-                              to='/categoryPage'
                             >
                               {name}
-                            </Link>
+                            </button>
                           </li>
                         );
                       })}

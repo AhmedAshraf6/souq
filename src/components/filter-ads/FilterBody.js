@@ -16,7 +16,7 @@ const FilterBody = () => {
     useFilterContext();
 
   useEffect(() => {
-    fetchAdsBasedCat(subcatid ? subcatid : catid ? catid : 6); // we put default cat id for cars
+    fetchAdsBasedCat(subcatid ? subcatid : catid); // we put default cat id for cars
   }, [catid, subcatid, countryName, cityName]);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,7 +34,14 @@ const FilterBody = () => {
         {filteredAds && filteredAds.length > 0 ? (
           <>
             {filteredAds.map((ad) => {
-              return <Ad {...ad} key={ad.id} grid='col-xl-4 col-md-6' />;
+              return (
+                <Ad
+                  {...ad}
+                  key={ad.id}
+                  grid='col-xl-4 col-md-6'
+                  currency={currency}
+                />
+              );
             })}
             <Pagination />
           </>

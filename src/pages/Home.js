@@ -14,8 +14,8 @@ const Home = () => {
     toggleNavbarFunc,
     closeSubmenu,
     closeSearch,
-    fetchLocationIp,
     countryName,
+    fetchLocationIp,
     cityName,
   } = useMainContext();
   const { fetchAllAds, fetchCityAds, fetchFavouriteIds, turnToFree } =

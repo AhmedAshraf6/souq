@@ -21,10 +21,13 @@ const Ad = ({
   grid,
   prevLink = 'default',
   cover_photo,
+  country_code,
 }) => {
   const { token, favAdsIds, handleFavouriteAd } = useAdsContext();
   const { currency } = useMainContext();
   const [showMsg, setShowMsg] = useState(false);
+  const userloc = JSON.parse(localStorage.getItem('userlocation'));
+
   // var dte = created_at;
   // var today = new Date(dte);
   // var d = today.getFullYear();
@@ -94,7 +97,11 @@ const Ad = ({
             {/* {price} */}
             {renderedPrice}
 
-            <span className='text-primary'>{currency}</span>
+            <span className='text-primary'>
+              {country_code == userloc?.userCountryName
+                ? userloc?.userCurrency
+                : currency}
+            </span>
           </h6>
           {/* <ShareBox
                 url={`https://adsapp.org/#/singleproduct/${id}`}

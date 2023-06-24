@@ -3,8 +3,16 @@ import { useAdsContext } from '../../contexts/AdsProvider';
 import ShareBox from '../home/ShareBox';
 import { useMainContext } from '../../contexts/MainProvider';
 
-const SellerDetails = ({ title, price, location, created_at, id }) => {
-  const { userCurrency } = useMainContext();
+const SellerDetails = ({
+  title,
+  price,
+  location,
+  created_at,
+  id,
+  country_code,
+}) => {
+  const { currency } = useMainContext();
+  const userloc = JSON.parse(localStorage.getItem('userlocation'));
   var today = new Date(created_at && created_at);
   var userRegister = today.getFullYear();
   const renderedPrice = price && price.toLocaleString();
@@ -15,7 +23,11 @@ const SellerDetails = ({ title, price, location, created_at, id }) => {
           <h4 className='fw-bold'>{title && title}</h4>
           <h4 className='text-secondary'>
             <span>{renderedPrice}</span>
-            <span className='mx-2'>{userCurrency && userCurrency}</span>
+            <span className='mx-2'>
+              {country_code == userloc?.userCountryName
+                ? userloc?.userCurrency
+                : currency}
+            </span>
           </h4>
 
           <ShareBox

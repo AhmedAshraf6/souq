@@ -181,8 +181,8 @@ const MainProvider = ({ children }) => {
       const response = await axios(`${country_id_url}${cn}`);
       dispatch({
         type: COUNTRY_CODE,
-        payload: response.data.data.id,
-        payload2: cn,
+        payload: response.data.data.id, // no
+        payload2: cn, // proplem
         payload3: rw,
         payload4: currency,
       });
